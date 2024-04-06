@@ -387,8 +387,8 @@ def undistort_images(
     for fname in list_of_undistorted_images:
 
         print("Undistorting: {}".format(fname))
-        img_names = fname.split('/')[-1]
-
+        #img_names = fname.split('/')[-1]
+        head, img_names = os.path.split(fname)
         # read current distorted image
         img = cv2.imread(fname)
 
@@ -410,11 +410,5 @@ def undistort_images(
         if not os.path.isdir(path_to_saving_undistorted_images):
             os.makedirs(path_to_saving_undistorted_images, exist_ok=True)
             
-        # Pequeña Modificación que yo Jonathan Valadez estoy haciendo a este script:
-        # Comento esto:
-        cv2.imwrite(path_to_saving_undistorted_images+img_names, dst) 
-        # Y agrego esto: ----------------------------------------------------------------------
-        # output_path = os.path.join(os.path.dirname(__file__), path_to_saving_undistorted_images)
-        # cv2.imwrite(os.path.join(output_path, img_names), dst)
-        # -------------------------------------------------------------------------------------
+        cv2.imwrite(path_to_saving_undistorted_images+img_names, dst)
         print("Undistorted image saved in:{}".format(path_to_saving_undistorted_images+img_names)) 

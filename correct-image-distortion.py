@@ -54,6 +54,8 @@ def run_pipeline(args:argparse.ArgumentParser)->None:
                      camera_matrix, 
                      distortion_coefficients, 
                      args.path_to_undistorted_images)
+    
+    print(args.path_to_undistorted_images)
 
 
 if __name__=='__main__':   
